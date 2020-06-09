@@ -1,7 +1,7 @@
 {
 	"pluginmetadataversion" : 2,
 	"name": "Golang Symbol Restore",
-	"type": ["core", "ui", "architecture", "binaryview", "helper"],
+	"type": ["helper"],
 	"api": ["python3"],
 	"description": "Binary Ninja plugin for restoring function names from stripped Golang binaries",
 	"longdescription": "The plugin parses the section `.gopclntab` where Golang stores debug symbols and restores the function names. If there is no section named `.gopclntab` it will try to search for the section.",
