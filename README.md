@@ -17,7 +17,7 @@ This plugin requires the following minimum version of Binary Ninja:
 
 The following dependencies are required for this plugin:
 
- * Python3
+ * Python 3.6
 
 
 ## License
