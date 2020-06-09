@@ -92,7 +92,7 @@ def restore_symbols(view: binaryninja.binaryview.BinaryView,
 def restore_golang_symbols(view: binaryninja.binaryview.BinaryView):
     for section in view.sections.values():
         if is_gopclntab_section(view, section):
-            print(f"found .gopclntab at 0x{section.start}")
+            log_info(f"found .gopclntab at 0x{section.start}")
             restore_symbols(view, section)
             break
     else:
