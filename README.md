@@ -1,5 +1,6 @@
 # Golang Symbol Restore (v1.0)
-Author: **d-we**
+Author: **Daniel Weber**
+
 _Binary Ninja plugin for restoring function names from stripped Golang binaries._
 ## Description:
 The plugin parses the section `.gopclntab` where Golang stores debug symbols and restores 
