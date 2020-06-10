@@ -2,7 +2,7 @@
 Author: **Daniel Weber**
 
 _Binary Ninja plugin for restoring function names from stripped Golang binaries._
-## Description:
+## Description
 The plugin parses the section `.gopclntab` where Golang stores debug symbols and restores 
 the function names. If there is no section named `.gopclntab` it will try to search for the section.
 
