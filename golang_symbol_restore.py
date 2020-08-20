@@ -27,7 +27,7 @@ def is_gopclntab_section(view: binaryninja.binaryview.BinaryView,
 
 def get_pointer_LE(view: binaryninja.binaryview.BinaryView, addr: int) -> bytes:
     addr_size = view.address_size
-    return struct.unpack("<Q", view.read(addr, addr_size))[0]
+    return struct.unpack("<L" if addr_size == 4 else "<Q", view.read(addr, addr_size))[0]
 
 
 def get_dword_LE(view: binaryninja.binaryview.BinaryView, addr: int) -> bytes:
