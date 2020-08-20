@@ -1,4 +1,4 @@
-# Golang Symbol Restore (v1.0)
+# Golang Symbol Restore (v1.1)
 Author: **Daniel Weber**
 
 _Binary Ninja plugin for restoring function names from stripped Golang binaries._
