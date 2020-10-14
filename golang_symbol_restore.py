@@ -98,6 +98,10 @@ def restore_symbols(view: binaryninja.binaryview.BinaryView,
             view.create_user_function(function_addr)
             function = view.get_function_at(function_addr)
 
+        new_func_comment = function_name.value
+        if function.comment:
+            new_func_comment += "\n\n{}".format(function.comment)
+        function.comment = new_func_comment
         function.name = sanitize_func_name(function_name.value)
 
 
