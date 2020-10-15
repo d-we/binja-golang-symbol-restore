@@ -1,9 +1,20 @@
 #!/usr/bin/env python3
 
+import re
 import struct
 
 import binaryninja
 from binaryninja.log import log_error, log_info
+
+
+_RE_REPLACE_UNDERSCORE = re.compile("[^a-zA-Z0-9_]")
+_RE_COMPRESS_UNDERSCORE = re.compile("__+")
+
+
+def sanitize_func_name(name):
+    varname = _RE_REPLACE_UNDERSCORE.sub("_", name)
+    varname = _RE_COMPRESS_UNDERSCORE.sub("_", varname)
+    return varname
 
 
 def is_gopclntab_section(view: binaryninja.binaryview.BinaryView,
@@ -86,7 +97,12 @@ def restore_symbols(view: binaryninja.binaryview.BinaryView,
         if not function:
             view.create_user_function(function_addr)
             function = view.get_function_at(function_addr)
-        function.name = function_name.value
+
+        new_func_comment = function_name.value
+        if function.comment:
+            new_func_comment += "\n\n{}".format(function.comment)
+        function.comment = new_func_comment
+        function.name = sanitize_func_name(function_name.value)
 
 
 def restore_golang_symbols(view: binaryninja.binaryview.BinaryView):
